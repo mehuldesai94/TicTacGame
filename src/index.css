@@ -43,9 +43,17 @@ body {
   .game {
     display: flex;
     flex-direction: row;
+    padding-left:  10%;
+    padding-right: 10%; 
+    
   }
   
   .game-info {
     margin-left: 20px;
   }
-  
+
+  .playerForm{
+    vertical-align: middle;
+    padding-left: 10%;
+    padding-right: 10%;
+  }

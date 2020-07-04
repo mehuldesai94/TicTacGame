@@ -64,6 +64,45 @@ class Board extends React.Component {
     }
 }
 
+
+class NameForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            playerOne: '',
+            playerTwo: ''
+        };
+        this.handlePlayerOneChange = this.handlePlayerOneChange.bind(this);
+        this.handlePlayerTwoChange = this.handlePlayerTwoChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handlePlayerOneChange(event) { this.setState({ playerOne: event.target.value }); }
+    handlePlayerTwoChange(event) { this.setState({ playerTwo: event.target.value }); }
+    handleSubmit(event) {
+        alert('A name was submitted: \n player 1 : ' + this.state.playerOne + " \n player 2: " + this.state.playerTwo);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    Player 1:
+                    <input type="text" value={this.state.playerOne} onChange={this.handlePlayerOneChange} />
+                </label>
+                <br/><br/>
+                <label>
+                    Player 2:
+                    <input type="text" value={this.state.playerTwo} onChange={this.handlePlayerTwoChange} />
+                </label>
+                <br/><br/>
+                <input type="submit" value="Submit" />
+            </form>
+        );
+    }
+}
+
 class Game extends React.Component {
 
     constructor(props) {
@@ -94,7 +133,7 @@ class Game extends React.Component {
         })
     }
 
-    jumpTo(step){
+    jumpTo(step) {
         this.setState({
             stepNumber: step,
             xPlayerMove: (step % 2) === 0,
@@ -108,12 +147,12 @@ class Game extends React.Component {
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
-            const desc = move ? 
-            'Go to move #' + move :
-            'Go to game start';
-            return(
+            const desc = move ?
+                'Go to move #' + move :
+                'Go to game start';
+            return (
                 <li key={move}>
-                    <button onClick = { () => this.jumpTo(move)}>{desc}</button>
+                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             )
         })
@@ -126,6 +165,9 @@ class Game extends React.Component {
 
         return (
             <div className="game">
+                <div className="playerForm">
+                    <NameForm/>
+                </div>
                 <div className="game-board">
                     <Board squares={current.squares}
                         onClick={(i) => this.handleClick(i)} />
