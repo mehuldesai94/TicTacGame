@@ -2,6 +2,8 @@ import React from 'react';
 import Board from './Board';
 import NameForm from './NameForm';
 
+const FIRST_STEP = 0;
+const LAST_STEP = 9;
 
 function calculateWinner(squares) {
     const winnerLines = [
@@ -31,13 +33,18 @@ class Game extends React.Component {
                 squares: Array(9).fill(null),
             }],
             xPlayerMove: true,
-            stepNumber: 0,
+            stepNumber: FIRST_STEP,
             playerOne: '',
             playerTwo: '',
         }
     }
 
     handleClick(i) {
+        if (this.state.playerOne === '' && this.state.playerTwo === '') {
+            alert("Enter Gamers Name to continue...");
+            return;
+        }
+
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
@@ -80,20 +87,29 @@ class Game extends React.Component {
                 'Go to move #' + move :
                 'Go to game start';
             return (
-                <div>
-                    {move === 0 ? '' : (move % 2 === 0 ? this.state.playerTwo : this.state.playerOne)}
-                    <li key={move}>
-                        <button onClick={() => this.jumpTo(move)}>{desc}</button>
-                    </li>
+
+                <div class="container">
+                    <div class="row" key={move}>
+                        <div class="col-3" >
+                            {move === 0 ? '' : (move % 2 === 0 ? this.state.playerTwo : this.state.playerOne)}
+                        </div>
+                        <div class="col-3">
+                            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                        </div>
+                    </div>
                 </div>
             )
         })
 
         let status;
-        if (winner)
-            status = "Winner:" + winner;
+        if (winner) {
+            let winnerName = (winner === 'X' ? this.state.playerOne : this.state.playerTwo)
+            status = "Winner is " + winnerName.toUpperCase();
+        }
+        else if (this.state.stepNumber == LAST_STEP)
+            status = "Match Tie...";
         else
-            status = "Next Player: " + (this.state.xPlayerMove ? this.state.playerTwo : this.state.playerOne);
+            status = "Next Player: " + (this.state.xPlayerMove ? this.state.playerOne : this.state.playerTwo);
 
         return (
             <div className="game">
