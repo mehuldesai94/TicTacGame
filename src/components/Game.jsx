@@ -106,7 +106,7 @@ class Game extends React.Component {
             let winnerName = (winner === 'X' ? this.state.playerOne : this.state.playerTwo)
             status = "Winner is " + winnerName.toUpperCase();
         }
-        else if (this.state.stepNumber == LAST_STEP)
+        else if (this.state.stepNumber === LAST_STEP)
             status = "Match Tie...";
         else
             status = "Next Player: " + (this.state.xPlayerMove ? this.state.playerOne : this.state.playerTwo);
