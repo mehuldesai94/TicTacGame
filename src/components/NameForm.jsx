@@ -1,44 +1,50 @@
-import React from 'react';
-
+import React  from 'react';
+import { TextField, Button, Grid, Paper } from '@material-ui/core'
 
 class NameForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            playerOne: '',
-            playerTwo: ''
-        };
-        this.handlePlayerOneChange = this.handlePlayerOneChange.bind(this);
-        this.handlePlayerTwoChange = this.handlePlayerTwoChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    handlePlayerOneChange(event) { this.setState({ playerOne: event.target.value }); }
-    handlePlayerTwoChange(event) { this.setState({ playerTwo: event.target.value }); }
-    handleSubmit(event) {
+    state = {
+        playerOne: '',
+        playerTwo: ''
+    };
+
+    handlePlayerOneChange = (e) => {
+        e.preventDefault();
+        this.setState({ playerOne: e.target.value });
+    }   
+    
+    handlePlayerTwoChange = (e) => {
+        e.preventDefault();
+        this.setState({ playerTwo: e.target.value });
+    }   
+
+    handleSubmit = (event) => {
         alert('A name was submitted: \n player 1 : ' + this.state.playerOne + " \n player 2: " + this.state.playerTwo);
         event.preventDefault();
         this.props.handleGamerNames(this.state.playerOne, this.state.playerTwo);
     }
 
     render() {
+        //const [classes] = useStyles();
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Player 1:
-                    <input type="text" value={this.state.playerOne} onChange={this.handlePlayerOneChange} />
-                </label>
-                <br/><br/>
-                <label>
-                    Player 2:
-                    <input type="text" value={this.state.playerTwo} onChange={this.handlePlayerTwoChange} />
-                </label>
-                <br/><br/>
-                <input type="submit" value="Submit" />
+            <form>
+                <Paper elevation={4} style={{ padding: 16 }}>
+                    <Grid container alignItems="flex-start" spacing={2}>
+                        <Grid item xs = {12}>
+                            <TextField id="standard-basic" label="Player 1" value={this.state.playerOne} onChange={this.handlePlayerOneChange} />
+                        </Grid>
+                        <Grid item xs = {12}>
+                            <TextField id="standard-basic" label="Player 2" value={this.state.playerTwo} onChange={this.handlePlayerTwoChange} />
+                        </Grid>
+                        <Button variant="contained" color="primary" value="Submit" onClick={this.handleSubmit}>Submit</Button>
+                    </Grid>
+                </Paper>
+                {/* <input type="submit" value="Submit" /> */}
             </form>
         );
     }
 }
+
 
 
 export default NameForm;

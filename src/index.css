@@ -21,15 +21,15 @@ body {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
+    font-size: 45px;
     font-weight: bold;
     line-height: 34px;
-    height: 34px;
+    height: 50px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 50px;
   }
   
   .square:focus {
@@ -39,21 +39,38 @@ body {
   .kbd-navigation .square:focus {
     background: #ddd;
   }
-  
+/*   
   .game {
     display: flex;
     flex-direction: row;
     padding-left:  10%;
     padding-right: 10%; 
-    
+
   }
-  
+   */
   .game-info {
-    margin-left: 20px;
+    padding-top: 50px;
   }
 
   .playerForm{
     vertical-align: middle;
     padding-left: 10%;
     padding-right: 10%;
+  }
+
+  .btnMove{
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+  }
+
+  .txtLabel{
+    margin: 5px;
+    padding: 10px;
+    min-width: 100px;
+  }
+
+  .game-board{
+    padding-left: 200px;
+    padding-top: 100px;
   }
