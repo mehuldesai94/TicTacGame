@@ -21,15 +21,15 @@ body {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: bold;
     line-height: 34px;
-    height: 50px;
+    height: 65px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 50px;
+    width: 65px;
   }
   
   .square:focus {
@@ -59,18 +59,20 @@ body {
   }
 
   .btnMove{
-    margin: 10px;
-    padding: 20px;
     width: 200px;
   }
 
   .txtLabel{
     margin: 5px;
-    padding: 10px;
-    min-width: 100px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+    text-align: center;
+    min-width: 80px;
+    color: #008ABC;
+    font-size: large;
   }
 
   .game-board{
     padding-left: 200px;
-    padding-top: 100px;
+    padding-top: 50px;
   }

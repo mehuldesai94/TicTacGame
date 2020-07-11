@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-// import ContactsIcon from '@material-ui/icons/Contacts';
 import Board from './Board';
 import NameForm from './NameForm';
 
@@ -91,10 +90,10 @@ class Game extends React.Component {
                 <div class="container">
                     <div class="row" key={move}>
                         <div class="col-3" >
-                            <label className='txtLabel'>{move === 0 ? "Move by": (move % 2 === 0 ?  this.state.playerTwo : this.state.playerOne)}</label>
+                            <label className='txtLabel'>{move === 0 ? "Move By": (move % 2 === 0 ?  this.state.playerTwo : this.state.playerOne)}</label>
                         </div>
                         <div class="col-3">
-                            <Button className="btnMove" size="medium" variant="outlined" color="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
+                            <Button className="btnMove" size="medium" variant="contained" color="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>  
                         </div>
                     </div>
                 </div>
